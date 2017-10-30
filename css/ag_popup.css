@@ -1,0 +1,15 @@
+#popup_newsletter-input {
+    left: 400px;
+    top: 160px;
+}
+#popup_subscribe_btn {
+    top: 200px;
+}
+#popup_cancel_btn {
+    top: 250px;
+}
+input.popup-btn {
+    position: absolute;
+    left: 400px;
+    left: 400px;
+}
