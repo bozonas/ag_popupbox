@@ -4,13 +4,18 @@
   {else}
     {$popupbox_data_mobile}
   {/if}
-  <input class="inputNew popup-btn" id="popup_newsletter-input" type="text" name="email" size="18" value="{if isset($value) && $value}{$value}{else}{l s='your e-mail' mod='blocknewsletter'}{/if}" />
-  <input id="popup_subscribe_btn" value="ok" class="button_mini popup-btn" name="submitNewsletter" />
-  <input id="popup_cancel_btn" value="ok" class="button_mini popup-btn" name="" />
+  <div class="{if ($mobile_device == false)}{'not-mobile'}{else}{'mobile'}{/if}">
+    <input class="inputNew popup-btn" id="popup_newsletter-input" type="text" name="email" size="18" placeholder="Įveskite el. paštą" />
+    <button id="popup_subscribe_btn" class="button_mini popup-btn" name="submitNewsletter" onclick="popup_subscribeNewsLetter();">
+      <span>Gauti 15% nuolaidą ></span>
+    </button>
+    <button id="popup_cancel_btn" class="button_mini popup-btn" onclick="popup_closefancybox();">
+      <span>{if ($mobile_device == false)}{'Ne, ačiū, noriu mokėti visą sumą'}{else}{'Ne, ačiū'}{/if}</span>
+    </button>
+  </div>
 </div>
 
 <script type="text/javascript">
-var isMobile="{$mobile_device}";
 {literal}
   $(document).ready(function() { 
     var cookie = $.getCookie('home_popup');
@@ -26,7 +31,7 @@ var isMobile="{$mobile_device}";
       (function () {
       $("html").on("mouseout.ouibounce", function () {
         function e() {
-          if (cookie != '2') {
+          if (cookie != '1') {
             $.setCookie('home_popup','1',1);// expiration 1 hour
             $.fancybox({
               'content' 	: $(".home_popup").html(),
@@ -44,27 +49,23 @@ var isMobile="{$mobile_device}";
         ())
     })();
     }
+  });
 
-    $('#subscribe_popup_btn').click(function(e) {
-        debugger;
-        e.preventDefault();
+  function popup_subscribeNewsLetter() {
         var mainurl = {/literal}"{$link->getPageLink('index', true)|escape:'html'}"{literal};
         var data = {
-          email: $('#popup_newsletter-input'),
+          email: $('.fancybox-inner #popup_newsletter-input').val(),
           submitNewsletter: "",
           action: 0
         };
         $.post(mainurl, data);
         $.fancybox.close();
         $.setCookie('home_popup','1',60 * 24); // 60 days
-      });
-  
-    $('#popup_cancel_btn').click(function(e) {
-        e.preventDefault();
+  }
 
-        $.setCookie('home_popup','1',1 * 24);
-        $.fancybox.close();
-      });
-  });
+  function popup_closefancybox() {
+      $.setCookie('home_popup','1',1 * 24);
+      $.fancybox.close();
+  }
 </script>
 {/literal}

@@ -1,15 +1,61 @@
 #popup_newsletter-input {
-    left: 400px;
-    top: 160px;
+    left: 456px;
+    top: 179px;
+    width: 200px;
+    height: 40px;
+    padding: 5px 7px;
+    background: #dddddd;
+    color: #707070;
+    border: none;
 }
 #popup_subscribe_btn {
-    top: 200px;
+    text-align: center;
+    top: 232px;
+    background: #8ba700;
+    font-size: 17px;
+    color: #ffffff;
+    border: none;
+    font-family: sans-serif;
+    height: 40px;
+    font-weight: 700;
+}
+#popup_subscribe_btn:hover {
+    background: #5c5b6b;
 }
 #popup_cancel_btn {
-    top: 250px;
+    top: 317px;
+    background: transparent;
+    font-size: 12px;
+    font-weight: inherit;
+    border-width: 4px;
+    border-color: #8ba700;
+    color: #8ba700;
+    height: 40px;
+    border-style: solid;
 }
-input.popup-btn {
+input.popup-btn, button.popup-btn {
     position: absolute;
-    left: 400px;
-    left: 400px;
+    left: 456px;
+    width: 200px;
+}
+.mobile input.popup-btn, .mobile button.popup-btn {
+    position: absolute;
+    left: 100px;
+    width: 200px;
+}
+.mobile #popup_newsletter-input {
+    left: 9px;
+    top: 94px;
+}
+.mobile #popup_subscribe_btn {
+    top: 145px;
+    left: 9px;
+}
+.mobile #popup_cancel_btn {
+    top: 213px;
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+    width: 133px;
+    left: 174px;
 }
